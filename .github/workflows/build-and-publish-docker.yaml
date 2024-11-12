@@ -22,8 +22,20 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Setup Maven settings.xml
+        run: |
+          echo '<settings>
+            <servers>
+              <server>
+                <id>github</id>
+                <username>${{ github.actor }}</username>
+                <password>${{ secrets.GITHUB_TOKEN }}</password>
+              </server>
+            </servers>
+          </settings>' > ~/.m2/settings.xml
+
       - name: Build with Maven
-        run: mvn clean package -Dusername="${{ github.actor }}" -Dpassword="${{ secrets.GITHUB_TOKEN }}"
+        run: mvn -B clean package --settings ~/.m2/settings.xml
 
       - name: Build Docker image
         run: docker build -t ghcr.io/gabrielcruzsoto/t2-excel-processor-api:latest .
