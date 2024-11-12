@@ -120,4 +120,13 @@
 		</plugins>
 		<finalName>app</finalName>
 	</build>
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/GabrielCruzSoto/t2-auth-openapi</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>
