@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 VOLUME /tmp
-COPY target/ .
+COPY target/app.jar app.jar
 ENV JAVA_OPTS=""
 ENV HOST_DB=""
 ENV DB=""
